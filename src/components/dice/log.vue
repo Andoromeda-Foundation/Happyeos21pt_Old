@@ -9,7 +9,8 @@
             <el-col :span="4">{{$t('Roll')}}</el-col>
             <el-col :span="4">{{$t('Payout')}}</el-col>
         </el-row>
-        <el-row v-for="(log, index) in logs" :class="{'log-item': true, 'gray': index%2 == 1}">
+        <el-row v-for="(log, index) in logs" :key="log.id"
+        :class="{'log-item': true, 'gray': index%2 == 1}">
             <el-col :span="4">#{{log.id}}</el-col>
             <el-col :span="4">{{log.account}}</el-col>
             <el-col :span="4">{{log.range}} {{log.direction === 'big' ? '↑' : '↓'}}</el-col>
@@ -21,29 +22,31 @@
 </template>
 
 <script>
-import * as store from '../../store.js';
-import Eos from 'eosjs';
-import * as request from 'superagent';
+import * as store from "../../store.js";
+import Eos from "eosjs";
+import * as request from "superagent";
 
 export default {
-    data() {
-      return {
-          logs: [],
-          store: store.store,
-      };
-    },
-    created() {
-        setInterval(() => {
-            this.getLogs().then();
-        }, 2000);
-    },
-    methods: {
-      getLogs: async function() {
-        const result = await request.get('http://api.happyeosslot.com/api/dice/logs');
-        this.logs = result.body;
-      },
+  data() {
+    return {
+      logs: [],
+      store: store.store
+    };
+  },
+  created() {
+    setInterval(() => {
+      this.getLogs().then();
+    }, 2000);
+  },
+  methods: {
+    getLogs: async function() {
+      const result = await request.get(
+        "http://api.happyeosslot.com/api/dice/logs"
+      );
+      this.logs = result.body;
     }
-}
+  }
+};
 </script>
 
 <style>
