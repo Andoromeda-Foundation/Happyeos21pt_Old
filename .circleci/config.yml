@@ -55,9 +55,6 @@ jobs:
       - attach_workspace: 
           at: ~/repo/dist
       - run:
-          name: have ssh folder
-          command: mkdir ~/.ssh
-      - run:
           name: Keyscan Github (HACK)
           command: ssh-keyscan -H github.com >> ~/.ssh/known_hosts
       - run:
