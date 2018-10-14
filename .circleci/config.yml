@@ -67,7 +67,7 @@ jobs:
             git init
             git add .
             git commit -m "Update website content"
-            git push --force --quiet git@github.com:Andoromeda-Foundation/Happyeos21pt.git master:gh-pages
+            git push --force --quiet git@github.com:Andoromeda-Foundation/Happyeos21pt_Old.git master:gh-pages
 
 workflows:
   version: 2
