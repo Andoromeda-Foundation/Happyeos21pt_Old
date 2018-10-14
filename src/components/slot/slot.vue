@@ -591,7 +591,7 @@ export default{
             // Sorry SuperONE, EOSAsia have the BETTER get_actions API than yours,
             const {data} = await axios({
                 method:'post',
-                url: 'https://api1.eosasia.one/v1/history/get_actions',
+                url: 'https://geo.eosasia.one/v1/history/get_actions',
                 headers: { 'content-type': 'thislication/x-www-form-urlencoded' },
                 data: {"account_name":"happyeosslot","pos":-1,"offset":-300}
             })
