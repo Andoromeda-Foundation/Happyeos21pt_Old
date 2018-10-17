@@ -9,14 +9,16 @@
             <el-col :span="4">{{$t('Roll')}}</el-col>
             <el-col :span="4">{{$t('Payout')}}</el-col>
         </el-row>
-        <el-row v-for="(log, index) in logs" :key="log.id"
-        :class="{'log-item': true, 'gray': index%2 == 1}">
+        <el-row v-for="log in logs" :key="log.id"
+        :class="{'log-item': true, 'win': isWin(log)}">
             <el-col :span="4">#{{log.id}}</el-col>
             <el-col :span="4">{{log.account}}</el-col>
             <el-col :span="4">{{log.range}} {{log.direction === 'big' ? '↑' : '↓'}}</el-col>
             <el-col :span="4">{{log.betAmount}} EOS</el-col>
             <el-col :span="4">{{log.roll}}</el-col>
-            <el-col :span="4" v-if="log.roll && ((log.direction === 'big' && log.roll > log.range) || (log.direction === 'small' && log.roll < log.range))" class="success">{{log.resultAmount}} EOS</el-col>
+            <el-col :span="4" 
+            v-if="isWin(log)" 
+            class="success">{{log.resultAmount}} EOS</el-col>
         </el-row>
     </div>
 </template>
@@ -44,14 +46,20 @@ export default {
         "http://api.happyeosslot.com/api/dice/logs"
       );
       this.logs = result.body;
+    },
+    isWin(log) {
+      return log.roll && ((log.direction === 'big' && log.roll > log.range) || (log.direction === 'small' && log.roll < log.range))
+    },
+    isMyLog() {
+      
     }
   }
 };
 </script>
 
-<style>
+<style scoped>
 #log {
-  background-color: #191919;
+  background-color: #000;
   padding: 50px;
   color: white;
   font-weight: 600;
@@ -64,11 +72,12 @@ export default {
   border-radius: 5px;
   margin: 5px 0;
   height: 50px;
+  background: #226B52;
   display: flex;
   align-items: center;
 }
-#log .gray {
-  background-color: #3f3e3e;
+#log .win {
+  background-color: #A02D2D;
 }
 #log .success {
   text-shadow: 0 0 5px #02f292;
