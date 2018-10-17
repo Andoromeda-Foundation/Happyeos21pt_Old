@@ -8,7 +8,7 @@ export default {
   'PAYOUT ON WIN': '赢取奖金',
   'ROLL UNDER TO WIN': '小于该数获胜',
   'ROLL OVER TO WIN': '大于该数获胜',
-  PAYOUT: '赔率',
+  PAYOUT: '获得',
   'WIN CHANCE': '中奖概率',
   LOGIN: '登录',
   'Enter Your Custom Seed': '输入自定义种子',
