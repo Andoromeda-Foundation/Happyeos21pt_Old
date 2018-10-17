@@ -50,7 +50,7 @@ export default {
   font-family: Poppins, sans-serif;
 }
 #game {
-  background: url("./assets/background_2.png");
+  background:rgba(6,19,20,1);;
   background-size: 100%;
   background-repeat: repeat repeat;
   display: flex;
