@@ -43,7 +43,7 @@ export default {
   methods: {
     getLogs: async function() {
       const result = await request.get(
-        "http://api.happyeosslot.com/api/dice/logs"
+        "https://api.happyeosslot.com/api/dice/logs"
       );
       this.logs = result.body;
     },
@@ -51,7 +51,7 @@ export default {
       return log.roll && ((log.direction === 'big' && log.roll > log.range) || (log.direction === 'small' && log.roll < log.range))
     },
     isMyLog() {
-      
+
     }
   }
 };
